@@ -36,12 +36,12 @@
                                 <td>{{ $shift->getStartTime() }}</td>
                                 <td>{{ $shift->getEndTime() }}</td>
                                 <td>
-                                    <a class="btn btn-primary" href="">
+                                    <a class="btn btn-primary" href="{{ route('shift.edit', $shift->getShiftID()) }}">
                                         <i class="bi-pencil"></i>
                                     </a>
                                 </td>
                                 <td>
-                                    <form action="" method="POST">
+                                    <form action="{{ route('shift.destroy', ['id' => $shift->getShiftID()]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger">
@@ -53,6 +53,37 @@
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="formModalShift" tabindex="-1" aria-labelledby="formModalShiftLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST" action="{{ route('shift.store') }}">
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="formModalShiftLabel">Create new shift</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="mb-3">
+                            <label for="Name" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="Name" name="Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="StartTime" class="form-label">Start Time</label>
+                            <input type="time" class="form-control" id="StartTime" name="StartTime" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="EndTime" class="form-label">End Time</label>
+                            <input type="time" class="form-control" id="EndTime" name="EndTime" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

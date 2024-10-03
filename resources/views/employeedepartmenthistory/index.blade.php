@@ -8,8 +8,6 @@
                     <h3>List EmployeeDepartmentHistory</h3>
                 </div>
                 <div class="ms-auto">
-                    <button class="btn btn-lg btn-outline-primary" type="button" data-bs-toggle="modal"
-                        data-bs-target="#formModalEmployee">Create new employeeDepartmentHistory</button>
                 </div>
             </div>
         </div>

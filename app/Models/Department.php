@@ -7,49 +7,63 @@ use Illuminate\Database\Eloquent\Model;
 
 class Department extends Model
 {
+    use HasFactory;
+
     protected $table = "departments";
-    public function employeeHistories(){
-        return $this-> hasMany(EmployeeDepartmentHistory::class);
+
+    protected $fillable = [
+        'DepartmentID', 
+        'Name', 
+        'GroupName', 
+        'ModifiedDate'
+    ];
+    protected $primaryKey = 'DepartmentID'; 
+    public $timestamp = false;
+    public $incrementing = false;
+    protected $keyType = 'string'; 
+
+    public function employeeHistories()
+    {
+        return $this->hasMany(EmployeeDepartmentHistory::class);
     }
 
-    public function getDepartmentID(): mixed
+    public function getDepartmentID()
     {
-        return $this
-            ->attributes['DepartmentID'];
+        return $this->attributes['DepartmentID'];
     }
-    public function setDepartmentID($departmentID): void
+
+    public function setDepartmentID($departmentID)
     {
-        $this
-            ->attributes['DepartmentID'] = $departmentID;
+        $this->attributes['DepartmentID'] = $departmentID;
     }
-    public function getName(): mixed
+
+    public function getName()
     {
-        return $this
-            ->attributes['Name'];
+        return $this->attributes['Name'];
     }
-    public function setName($name): void
+
+    public function setName($name)
     {
-        $this
-            ->attributes['Name'] = $name;
+        $this->attributes['Name'] = $name;
     }
-    public function getGroupName(): mixed
+
+    public function getGroupName()
     {
-        return $this
-            ->attributes['GroupName'];
+        return $this->attributes['GroupName'];
     }
-    public function setGroupName($groupName): void
+
+    public function setGroupName($groupName)
     {
-        $this
-            ->attributes['GroupName'] = $groupName;
+        $this->attributes['GroupName'] = $groupName;
     }
-    public function getModifiedDate(): mixed
+
+    public function getModifiedDate()
     {
-        return $this
-            ->attributes['ModifiedDate'];
+        return $this->attributes['ModifiedDate'];
     }
-    public function setModifiedDate($modifiedDate): void
+
+    public function setModifiedDate($modifiedDate)
     {
-        $this
-            ->attributes['ModifiedDate'] = $modifiedDate;
+        $this->attributes['ModifiedDate'] = $modifiedDate;
     }
 }

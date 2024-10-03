@@ -9,7 +9,7 @@ class Employee extends Model
 {
     use HasFactory;
     protected $table = "employees";
-     protected $fillable = [
+    protected $fillable = [
         'BusinessEntityID',
         'NationalIDNumber',
         'LoginID',
@@ -24,7 +24,9 @@ class Employee extends Model
         'SickLeaveHours',
         'ModifiedDate'
     ];
-     /**
+    public $timestamps = false;
+    protected $primaryKey = 'BusinessEntityID';
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
@@ -116,7 +118,7 @@ class Employee extends Model
     public function getGender(): mixed
     {
         return $this
-->attributes['Gender'];
+            ->attributes['Gender'];
     }
     public function setGender($Gender): void
     {

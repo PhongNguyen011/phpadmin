@@ -9,6 +9,15 @@ class Shift extends Model
 {
     use HasFactory;
     protected $table = "shifts";
+    protected $fillable = [
+        'ShiftID',
+        'Name',
+        'StartTime',
+        'EndTime',
+        'ModifiedDate'
+    ];
+    public $timestamps = false;
+    protected $primaryKey = 'ShiftID';
     public function employeeHistories()
     {
         return $this->hasMany(EmployeeDepartmentHistory::class);
